@@ -4,7 +4,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web",
-    "start": "react-native start"
+    "start": "react-native start",
+    "postinstall": "fix"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
@@ -22,7 +23,8 @@
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0"
+    "@babel/core": "^7.9.0",
+    "react-native-image-overlay": "^0.1.2"
   },
   "private": true
 }
