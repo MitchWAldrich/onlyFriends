@@ -1,21 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
+import Name from './src/components/MatchProfile/Name'
+import Bio from './src/components/MatchProfile/Bio'
+import MatchButtons from './src/components/MatchButtons';
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>HELLO WORLD!✨</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Bio/>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
