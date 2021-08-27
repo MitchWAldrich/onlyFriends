@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS matches CASCADE;
+
+CREATE TABLE matches (
+  user1_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  user2_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  best_friend BOOLEAN DEFAULT false
+);
