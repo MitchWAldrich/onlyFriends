@@ -11,6 +11,7 @@ const app = express();
 const db = require("./db");
 
 const users = require("./routes/users");
+// const photos = require("./routes/photos");
 
 function read(file) {
   return new Promise((resolve, reject) => {
@@ -28,19 +29,19 @@ function read(file) {
 }
 
 module.exports = function application(
-  ENV,
-  actions = { updateAppointment: () => {} }
+  ENV
+  // actions = { updateAppointment: () => {} }
 ) {
   app.use(cors());
   app.use(helmet());
   app.use(bodyparser.json());
 
   app.use("/api", users(db));
+  // app.use("/api", photos(db));
 
-  if (ENV === "development") {
     Promise.all([
-      read(path.resolve(__dirname, `db/schema/01_users.sql`)),
-      read(path.resolve(__dirname, `db/seeds/01_users.sql`))
+      read(path.resolve(__dirname, `db/schema/users.sql`)),
+      read(path.resolve(__dirname, `db/seeds/users.sql`)),
     ])
       .then(([create, seed]) => {
         app.get("/api/debug/reset", (request, response) => {
@@ -55,7 +56,7 @@ module.exports = function application(
       .catch(error => {
         console.log(`Error setting up the reset route: ${error}`);
       });
-  }
+  
 
   app.close = function() {
     return db.end();
